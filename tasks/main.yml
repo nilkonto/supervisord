@@ -12,14 +12,14 @@
 - name: copy startup script
   copy: src=supervisor
         dest=/etc/init.d/supervisor
-        user=root
+        owner=root
         group=root
         mode=0755
 
 - name: copy configuration script
   copy: src=supervisord.conf
         dest=/etc/supervisor/supervisord.conf
-        user=root
+        owner=root
         group=root
         mode=0644
 
