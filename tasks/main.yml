@@ -1,0 +1,29 @@
+---
+- name: install supervisord via pip
+  pip: name=supervisor
+
+- name: create configuration directory
+  file: state=directory
+        path=/etc/supervisor
+        owner=root
+        group=root
+        mode=0644
+
+- name: copy startup script
+  copy: src=supervisor
+        dest=/etc/init.d/supervisor
+        user=root
+        group=root
+        mode=0755
+
+- name: copy configuration script
+  copy: src=supervisord.conf
+        dest=/etc/supervisor/supervisord.conf
+        user=root
+        group=root
+        mode=0644
+
+- name: configure supervisord to start at startup
+  service: name=supervisor
+           state=started
+           enabled=yes
