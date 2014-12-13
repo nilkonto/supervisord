@@ -25,5 +25,4 @@
 
 - name: configure supervisord to start at startup
   service: name=supervisor
-           state=started
            enabled=yes
