@@ -2,12 +2,13 @@
 - name: install supervisord via pip
   pip: name=supervisor
 
-- name: create configuration directory
+- name: create configuration directories
   file: state=directory
-        path=/etc/supervisor
+        path=/etc/supervisor/conf.d
         owner=root
         group=root
         mode=0644
+        recurse=true
 
 - name: copy startup script
   copy: src=supervisor
