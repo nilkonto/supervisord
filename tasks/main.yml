@@ -4,11 +4,10 @@
 
 - name: create configuration directories
   file: state=directory
-        path=/etc/supervisor/conf.d
+        path=/etc/supervisord.d
         owner=root
         group=root
         mode=0644
-        recurse=true
 
 - name: copy startup script
   copy: src=supervisor
@@ -19,7 +18,7 @@
 
 - name: copy configuration script
   copy: src=supervisord.conf
-        dest=/etc/supervisor/supervisord.conf
+        dest=/etc/supervisord.conf
         owner=root
         group=root
         mode=0644
